@@ -9,6 +9,25 @@ type Endereco struct {
 	Estado     string
 }
 
+// Pessoa -Qualquer struct que tiver o método Desativar() estará implementando a "interface" pessoa.
+/*
+Uma "interface" nos possibilita utilizar diversos tipos, de uma forma cada vez mais simples
+Nos dá um poder de abstração maior.
+A assinatura de uma "interface" apenas e somente métodos.
+*/
+type Pessoa interface {
+	Desativar()
+}
+
+type Empresa struct {
+	Nome  string
+	Ativo bool
+}
+
+func (e *Empresa) Desativar() {
+	e.Ativo = false
+}
+
 type Cliente struct {
 	Nome  string
 	Idade int
@@ -20,6 +39,10 @@ type Cliente struct {
 func (c *Cliente) Desativar() {
 	c.Ativo = false
 	fmt.Printf("\nCliente %s foi desativado.", c.Nome)
+}
+
+func Desativacao(pessoa Pessoa) {
+	pessoa.Desativar()
 }
 
 func main() {
@@ -39,4 +62,7 @@ func main() {
 
 	fmt.Printf("\ncliente_1: %+v", cliente1)
 
+	minhaEmpresa := Empresa{Nome: "Google", Ativo: true}
+	Desativacao(&minhaEmpresa)
+	fmt.Printf("\nempresa_1: %+v", minhaEmpresa)
 }
