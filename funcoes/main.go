@@ -20,6 +20,16 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println("O resultado da soma é:", valor)
+
+	/*Clousure- é uma função anônima que pode ser utilizada no escopo de um a função
+	e também pode utilizar funções dentro de seu escopo.
+	*/
+	eq := func() int {
+		total, _ := sum(num1, num2)
+		return total * 2
+	}()
+
+	fmt.Println(eq)
 }
 
 func sum(a, b int) (int, error) {
