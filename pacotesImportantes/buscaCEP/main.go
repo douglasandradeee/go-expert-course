@@ -22,7 +22,7 @@ type ViaCEP struct {
 }
 
 func main() {
-	// captura os dados digitados no terminal e os imprimi
+	// captura os dados digitados no terminal e os imprime.
 	for _, url := range os.Args[1:] {
 		println(url)
 		response, err := http.Get(url)
