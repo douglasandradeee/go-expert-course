@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 )
 
 type ViaCEP struct {
@@ -21,11 +22,12 @@ type ViaCEP struct {
 	Siafi       string `json:"siafi"`
 }
 
+const URL_VIA_CEP string = "http://viacep.com.br/ws/"
+
 func main() {
 	// captura os dados digitados no terminal e os imprime.
-	for _, url := range os.Args[1:] {
-		println(url)
-		response, err := http.Get(url)
+	for _, cep := range os.Args[1:] {
+		response, err := http.Get(URL_VIA_CEP + cep + "/json/")
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error ao fazer requisição: %v\n", err)
 		}
@@ -41,7 +43,17 @@ func main() {
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error ao fazer o parse da resposta: %v\n", err)
 		}
-		fmt.Println(MyCEP)
+
+		file, err := os.Create(strings.ToLower(MyCEP.Cep + "_" + strings.ReplaceAll(MyCEP.Localidade, " ", "_") + ".txt"))
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error ao criar o arquivo: %v\n", err)
+		}
+		defer file.Close()
+
+		_, err = file.WriteString(fmt.Sprintf("CEP: %s, Localidade: %s, UF: %s, Logradouro: %s, Bairro: %s, DDD: %s", MyCEP.Cep, MyCEP.Localidade, MyCEP.Uf, MyCEP.Logradouro, MyCEP.Bairro, MyCEP.Ddd))
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error ao escrever no arquivo: %v\n", err)
+		}
 	}
 
 }
