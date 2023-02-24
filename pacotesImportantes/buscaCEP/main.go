@@ -54,6 +54,8 @@ func main() {
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error ao escrever no arquivo: %v\n", err)
 		}
+		fmt.Printf("Arquivo %s criado com sucesso.\n", file.Name())
+		fmt.Printf("%+v", MyCEP)
 	}
 
 }
