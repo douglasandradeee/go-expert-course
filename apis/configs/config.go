@@ -6,15 +6,15 @@ import (
 )
 
 type conf struct {
+	DBDriver      string `mapstructure:"DB_DRIVER"`
 	DBHost        string `mapstructure:"DB_HOST"`
 	DBPort        string `mapstructure:"DB_PORT"`
 	DBUser        string `mapstructure:"DB_USER"`
-	DBName        string `mapstructure:"DB_NAME"`
-	DBDriver      string `mapstructure:"DB_DRIVER"`
-	JWTSecret     string `mapstructure:"JWT_SECRET"`
 	DBPassword    string `mapstructure:"DB_PASSWORD"`
-	JWTExpiresIn  int    `mapstructure:"JWT_EXPIRES_IN"`
+	DBName        string `mapstructure:"DB_NAME"`
 	WebServerPort string `mapstructure:"WEB_SERVER_PORT"`
+	JWTSecret     string `mapstructure:"JWT_SECRET"`
+	JWTExpiresIn  int    `mapstructure:"JWT_EXPIRES_IN"`
 	TokenAuth     *jwtauth.JWTAuth
 }
 
