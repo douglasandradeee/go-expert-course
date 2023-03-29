@@ -2,26 +2,28 @@ package main
 
 import "fmt"
 
-func main() {
-	var meuArray [3]int
-	meuArray[0] = 10
-	meuArray[1] = 20
-	meuArray[2] = 30
+func unique(arr []string) []string {
+	result := []string{}
+	encountered := map[string]bool{}
 
-	/*
-		Este é um exemplo da forma simples de se obter o último elemento de qualquer array.
-		Passando a função len que retorna o tamanho do mesmo e subtraindo de 1, como o indicador de posição.
-	*/
-	fmt.Println(meuArray[len(meuArray)-1])
-
-	//Obtendo o primeiro elemento de um array.
-	fmt.Println(meuArray[0])
-
-	/*
-		Formas de se percorrer um array.
-	*/
-	for i, v := range meuArray {
-		fmt.Printf("\nNa posição %d temos o elemento: %v", i, v)
+	// Create a map of all unique elements.
+	for v := range arr {
+		encountered[arr[v]] = true
 	}
 
+	// Place all unique keys from
+	// the map into the results array.
+	for key, _ := range encountered {
+		result = append(result, key)
+	}
+	return result
+}
+
+func main() {
+	array1 := []string{"a", "a", "A", "b", "b", "c", "a", "1"}
+	fmt.Println(array1)
+	unique_items := unique(array1)
+	fmt.Println(unique_items)
+
+	fmt.Printf("aaaaaa\t\naaaaaaaaa\t\n")
 }
