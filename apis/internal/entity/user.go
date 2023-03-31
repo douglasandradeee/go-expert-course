@@ -13,7 +13,7 @@ type User struct {
 	Password string    `json:"-"`
 }
 
-func NewUser(name, password string) (*User, error) {
+func NewUser(name, email, password string) (*User, error) {
 	hashPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
 		return nil, err
@@ -22,6 +22,7 @@ func NewUser(name, password string) (*User, error) {
 	return &User{
 		ID:       entity.NewID(),
 		Name:     name,
+		Email:    email,
 		Password: string(hashPassword),
 	}, nil
 }
