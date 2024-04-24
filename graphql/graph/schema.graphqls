@@ -1,0 +1,38 @@
+type Category {
+  id: ID!
+  name: String!
+  description: String
+  courses: [Course!]!
+}
+
+type Course {
+  id: ID!
+  name: String!
+  description: String
+  category: Category!
+}
+
+#gerando modelo do input/dados de entrada com os dados necessários para criar uma nova categoria.
+input NewCategory {
+  name: String!
+  description: String
+}
+
+#gerando modelo do input/dados de entrada com os dados necessários para criar uma novo curso.
+input NewCourse {
+  name: String!
+  description: String
+  category: ID!
+}
+
+##criando consultas da listagens de nossos tipos, nossa entidades/structs
+type Query {
+  categories: [Category!]!
+  courses: [Course!]!
+}
+
+##Mutation é quando vamos fazer alguma alteração no modelo, adicionar, mudar, remover etc.
+type Mutation {
+  createCategory(input: NewCategory!): Category!
+  createCourse(input: NewCourse!): Course!
+}
