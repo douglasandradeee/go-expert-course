@@ -12,8 +12,23 @@ import (
 )
 
 // Courses is the resolver for the courses field.
+// Obtem os cursos por id de categoria
 func (r *categoryResolver) Courses(ctx context.Context, obj *model.Category) ([]*model.Course, error) {
-	panic(fmt.Errorf("not implemented: Courses - courses"))
+	courses, err := r.CourseDB.FindByCategoryID(obj.ID)
+	if err != nil {
+		return nil, err
+	}
+
+	var coursesModel []*model.Course
+	for _, course := range courses {
+		description := course.Description
+		coursesModel = append(coursesModel, &model.Course{
+			ID:          course.ID,
+			Name:        course.Name,
+			Description: &description,
+		})
+	}
+	return coursesModel, nil
 }
 
 // Category is the resolver for the category field.
