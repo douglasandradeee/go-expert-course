@@ -6,7 +6,6 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/douglasandradeee/go-expert-course/graphql/graph/model"
 )
@@ -32,8 +31,18 @@ func (r *categoryResolver) Courses(ctx context.Context, obj *model.Category) ([]
 }
 
 // Category is the resolver for the category field.
+// Obtem a categoria pelo id do curso.
 func (r *courseResolver) Category(ctx context.Context, obj *model.Course) (*model.Category, error) {
-	panic(fmt.Errorf("not implemented: Category - category"))
+	category, err := r.CategoryDB.FindByCourseID(obj.ID)
+	if err != nil {
+		return nil, err
+	}
+
+	return &model.Category{
+		ID:          category.ID,
+		Name:        category.Name,
+		Description: &category.Description,
+	}, nil
 }
 
 // CreateCategory is the resolver for the createCategory field.
