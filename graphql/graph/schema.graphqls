@@ -22,7 +22,7 @@ input NewCategory {
 input NewCourse {
   name: String!
   description: String
-  category: ID!
+  categoryId: ID!
 }
 
 ##criando consultas da listagens de nossos tipos, nossa entidades/structs
