@@ -19,7 +19,7 @@ func main() {
 	defer db.Close()
 
 	//chamando o categoryDB.
-	categoryDb := database.NewCategory()
+	categoryDb := database.NewCategory(db)
 	// injetando o categoryDB no service e chamando o service.
 	categoryService := service.NewCategoryService(*categoryDb)
 
