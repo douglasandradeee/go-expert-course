@@ -6,5 +6,5 @@ type EmployeePJ struct {
 }
 
 func (e *EmployeePJ) CalculateSalary() float64 {
-	return e.CalculateSalary()
+	return e.HoursWorked * e.HourlyRate
 }
