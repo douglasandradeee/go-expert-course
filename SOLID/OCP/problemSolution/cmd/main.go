@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/douglasandradeee/go-expert-course/solid/ocp/employee"
-	"github.com/douglasandradeee/go-expert-course/solid/ocp/payroll"
+	"github.com/douglasandradeee/go-expert-course/SOLID/OCP/employee"
+	"github.com/douglasandradeee/go-expert-course/SOLID/OCP/payroll"
 )
 
 func main() {
