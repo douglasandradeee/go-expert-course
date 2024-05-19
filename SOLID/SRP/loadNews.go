@@ -1,4 +1,4 @@
-package singleResponsibilityPrinciple
+package srp
 
 import "net/url"
 
