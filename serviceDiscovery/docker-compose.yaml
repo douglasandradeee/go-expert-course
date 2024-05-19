@@ -8,6 +8,9 @@ services:
       command: ['tail', '-f', '/dev/null']
       volumes:
           - ./servers/server01:/etc/consul.d
+      ports:
+          - "8500:8500"
+
     consulserver02:
       image: consul:1.10
       container_name: consulserver02
@@ -15,6 +18,7 @@ services:
       command: ['tail', '-f', '/dev/null']
       volumes:
           - ./servers/server02:/etc/consul.d
+
     consulserver03:
       image: consul:1.10
       container_name: consulserver03
@@ -30,6 +34,7 @@ services:
       command: ['tail', '-f', '/dev/null']
       volumes:
           - ./serviceDiscovery/clients/consul01:/etc/consul.d
+          
     consulclient02:
       image: consul:1.10
       container_name: consulclient02
