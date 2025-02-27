@@ -12,6 +12,9 @@ services:
     tty: true
     ports:
       - "3000:3000"
+    ##depends_on: servia para esperar a inicialização de um serviço antes de iniciar outro, isso na versão 2 do docker-compose
+    depends_on:
+      - db
 
   db:
     image: mysql:5.7
