@@ -1,0 +1,27 @@
+{
+  "name": "go-expert-course",
+  "version": "1.0.0",
+  "description": "Esse repositório trata-se de estudos de aprimoramento do desenvolvimento e práticas utilizando a linguagem GO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/douglasandradeee/go-expert-course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/douglasandradeee/go-expert-course/issues"
+  },
+  "homepage": "https://github.com/douglasandradeee/go-expert-course#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
